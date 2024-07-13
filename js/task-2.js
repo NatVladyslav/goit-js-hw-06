@@ -12,31 +12,27 @@
 class Storage {
     #items;
     constructor(startArr) {
-        this.#items = startArr.items;
+        this.#items = startArr;
     }
     getItems() {
         return this.#items;
     }
-    // addItems(newItem) {
-    //     startArr.items.push(newItem);
-    // }
-    // removeItem(itemToRemove) {
-    //     for (const item of startArr.items) {
-    //         if (item === itemToRemove) {
-    //             item.shift(itemToRemove);
-    //         }
-    //     }
-    // }
+    addItem(newItem) {
+        this.#items.push(newItem);
+    }
+    removeItem(itemToRemove) {
+        this.#items = this.#items.filter(item => item !== itemToRemove);
+    }
 }
 
 const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
 console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
 
-// storage.addItem("Droid");
-// console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+storage.addItem("Droid");
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
 
-// storage.removeItem("Prolonger");
-// console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+storage.removeItem("Prolonger");
+console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
 
-// storage.removeItem("Scaner");
-// console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+storage.removeItem("Scaner");
+console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
